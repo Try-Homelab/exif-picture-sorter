@@ -4,7 +4,6 @@ var path = require('path')
 var read = require('fs-readdir-recursive')
 var SortString = require('./utils/SortString')
 const config = require('./data/config.json');
-const { exit } = require('process');
 
 var inputdir = config.inputdir
 var outputdir = config.outputdir
@@ -21,7 +20,7 @@ if(process.env.FOLDER_NAME == "" || process.env.FILE_NAME == ""){
     files.forEach(function (filename) {
         console.log(filename)
         let extension = path.extname(filename).toLowerCase()
-        if(extension_list.includes(extension)){
+        if(extension_list.includes(extension) || process.env.OBSERVE_EXTENSIONS == false){
             try {
                 new ExifImage({ image : `${inputdir}/${filename}` }, function (error, exifData) {
                     if (error){
@@ -57,3 +56,17 @@ if(process.env.FOLDER_NAME == "" || process.env.FILE_NAME == ""){
             }
         }
     });
+
+    /**
+ * 
+ * "extensions": [
+        ".jpeg",
+        ".jpg"
+        ]
+    "folder": "%year%%dir%%month%%dir%",
+    "name": "%year%%month%%day%_%filename%",
+
+
+
+        docker run -d -e OBSERVE_EXTENSIONS=true -e FOLDER_NAME="%year%%dir%%month%%dir%" -e FILE_NAME="%year%%month%%day%_%filename%" -v /Users/richard/Desktop/Photo-Sort-Docker/input:/input -v /Users/richard/Desktop/Photo-Sort-Docker/output:/output 6b778f3490a5
+ */
