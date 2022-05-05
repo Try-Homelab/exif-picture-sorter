@@ -1,0 +1,10 @@
+{
+    "folder": "%year%%dir%%month%%dir%",
+    "name": "%year%%month%%day%_%filename%",
+    "inputdir": "../../input",
+    "outputdir": "../../output",
+    "extensions": [
+        ".jpeg",
+        ".jpg"
+        ]
+}
