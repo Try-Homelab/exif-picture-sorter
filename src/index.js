@@ -4,12 +4,18 @@ var path = require('path')
 var read = require('fs-readdir-recursive')
 var SortString = require('./utils/SortString')
 const config = require('./data/config.json');
+const { exit } = require('process');
 
 var inputdir = config.inputdir
 var outputdir = config.outputdir
-var sortOutDir = config.folder
-var sortOutName = config.name
+var sortOutDir = process.env.FOLDER_NAME //config.folder
+var sortOutName = process.env.FILE_NAME //config.name
 var extension_list = config.extensions
+
+if(process.env.FOLDER_NAME == "" || process.env.FILE_NAME == ""){
+    console.log("You have to set ENV: FOLDER_NAME and ENV: FILE_NAME")
+    process.exit(1)
+}
 
     const files = read(inputdir)
     files.forEach(function (filename) {
