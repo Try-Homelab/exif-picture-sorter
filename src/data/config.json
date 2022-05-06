@@ -1,5 +1,8 @@
 {
     "inputdir": "/input",
     "outputdir": "/output",
-    "extensions": []
+    "extensions": [
+        ".jpeg",
+        ".jpg"
+        ]
 }

@@ -26,6 +26,7 @@ if(process.env.FOLDER_NAME == "" || process.env.FILE_NAME == ""){
                     if (error){
                         console.log('Error: '+error.message);
                     }else{
+                        console.log(exifData);
                         let created = exifData.exif.CreateDate
                         let date = created.split(" ")
 
