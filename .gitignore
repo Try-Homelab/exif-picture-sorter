@@ -8,3 +8,4 @@ yarn-error.log
 .idea
 .vscode
 .yarn-cache
+.DS_Store
