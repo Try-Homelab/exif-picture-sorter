@@ -3,6 +3,7 @@
     "outputdir": "/output",
     "extensions": [
         ".jpeg",
-        ".jpg"
+        ".jpg",
+        ".png"
         ]
 }
